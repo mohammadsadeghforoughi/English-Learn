@@ -3,11 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+mongoose.connect('mongodb://localhost:27017/PharmaBook3', {
+  useNewUrlParser: true
+}).then(e => {
+  console.log('\x1b[36m%s\x1b[0m', "MongoDB Connected!!")
+}).catch(err => {
+  console.error("Mongodb Connection Fail!!")
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

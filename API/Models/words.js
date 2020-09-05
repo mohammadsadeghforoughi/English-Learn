@@ -7,7 +7,10 @@ const WordsSchema = new mongoose.Schema(
       //   unique: true,
       type: String,
     },
-    relatedWords: [{ type: mongoose.Schema.Types.ObjectId }],
+    meaning: {
+      type: String,
+    },
+    relatedWords: [{ type: mongoose.Schema.Types.ObjectId ,  ref:'Words' }],
     quizCount: { type: Number, default: 0 },
   },
   {
